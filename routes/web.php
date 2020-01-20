@@ -23,6 +23,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth','prefix' => 'contato'], function(){
     Route::get('/','ContatoController@index');
+    Route::get('/add','ContatoController@create');
     Route::post('/','ContatoController@store');
     Route::get('{id}','ContatoController@show');
     Route::get('/edit/{id}','ContatoController@edit');
