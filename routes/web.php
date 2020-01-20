@@ -23,4 +23,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth','prefix' => 'contato'], function(){
     Route::get('/','ContatoController@index');
+    Route::post('/','ContatoController@store');
+    Route::get('{id}','ContatoController@show');
+    Route::get('/edit/{id}','ContatoController@edit');
+    Route::put('{id}','ContatoController@update');
+    Route::delete('{id}','ContatoController@destroy');
 });

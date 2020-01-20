@@ -25,7 +25,7 @@ class ContatoController extends Controller
      */
     public function create()
     {
-        //
+        return view('contato.create');
     }
 
     /**
@@ -34,9 +34,10 @@ class ContatoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContatoRequest $request)
     {
-        //
+        $contato = Contato::create($request->all());
+        return redirect('contatos');
     }
 
     /**
@@ -47,7 +48,8 @@ class ContatoController extends Controller
      */
     public function show($id)
     {
-        //
+        $contato = Contato::find($id);
+        return view('contato.show', ['data'=>$contato]);
     }
 
     /**
@@ -58,8 +60,10 @@ class ContatoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contato = Contato::find($id);
+        return view('contato.edit', ['data'=>$contato]);
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -68,10 +72,16 @@ class ContatoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+    public function update(ContatoRequest $request, $id)
     {
-        //
+
+        $contato = Contato::find($id);
+        $contato->fill($request->all());
+        $contato->update();
+        return redirect('contatos');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -81,6 +91,7 @@ class ContatoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Contato::destroy($id);
+        return redirect('contatos');
     }
 }
