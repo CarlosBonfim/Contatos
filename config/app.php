@@ -1,8 +1,10 @@
 <?php
 
 return [
-
+    'faker_locale' => 'pt_BR',
+   
     /*
+
     |--------------------------------------------------------------------------
     | Application Name
     |--------------------------------------------------------------------------
@@ -38,7 +40,7 @@ return [
     | application. If disabled, a simple generic error page is shown.
     |
     */
-
+    
     'debug' => env('APP_DEBUG', false),
 
     /*
